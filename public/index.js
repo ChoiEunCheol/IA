@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
       menuContainer.style.display = "block";
     }
   });
-  
+
   submitButton.addEventListener("click", function () {
     const inputData = inputField.value;
     const xhr = new XMLHttpRequest();
