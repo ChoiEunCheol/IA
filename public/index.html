@@ -13,7 +13,7 @@
     </div>
     <div class="menu-container"> <!-- 메뉴 컨테이너를 추가 -->
         <ul class="menu-list">
-            <li><a href="#"></a></li>
+            <li><a href="#">dd</a></li>
             <li><a href="#"></a></li>
             <li><a href="#"></a></li>
             <li><a href="#"></a></li>
@@ -30,7 +30,7 @@
     <script>// AJAX 요청을 사용하여 서버에서 데이터를 요청
         const input = document.getElementById("inputField");
         const smileyIcon = document.getElementById("smiley");
-        const li = document.getElementsByTagName("li");
+        const aTag = document.getElementsByTagName("a");
 
         fetch('http://localhost:3000/jsonfile')
             .then(response => response.json())
@@ -38,7 +38,7 @@
                 // 가져온 데이터를 HTML 페이지에 표시
                 smileyIcon.innerHTML = data.header.logo;
                 for (let i = 0; i < 4; i++) {
-                    li[i].innerHTML = data.header.hamburgerMenu[i]
+                    aTag[i].innerHTML = data.header.hamburgerMenu[i]
                 }
                 input.placeholder = data.header.promptInputPlaceholder;
             })

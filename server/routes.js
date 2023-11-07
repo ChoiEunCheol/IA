@@ -37,17 +37,7 @@ router.get('/jsonfile', (req, res) => {
       res.status(500).json({ error: '데이터를 불러오지 못했습니다.' });
     }
   });
-// router.get('/', (req, res) => {
-//   try {
-//     const data = fs.readFileSync(dataPath, 'utf8');
-//     const jsonData = JSON.parse(data);
-//     res.json(jsonData);
-//   } catch (error) {
-//     console.error('데이터를 읽어오는 동안 오류 발생:', error);
-//     res.status(500).json({ error: '데이터를 불러오지 못했습니다.' });
-//   }
-// });
-
+  
 function readUserInfo() {
   try {
     const data = fs.readFileSync(dataPath, 'utf8');

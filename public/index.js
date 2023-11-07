@@ -1,13 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
   let userInfo; // userInfo를 전역 변수로 정의
   let logoInfo; // logoInfo를 전역 변수로 정의
-  console.log(logoInfo)
+  console.log(logoInfo);
 
   const inputField = document.getElementById("inputField");
   const submitButton = document.getElementById("submitButton");
   const responseDiv = document.getElementById("response");
+
   const menuButton = document.getElementById("menu");
   const menuContainer = document.querySelector(".menu-container");
+
+  function toggleMenu() {
+    if (menuContainer.classList.contains("menu-open")) {
+      menuContainer.classList.remove("menu-open");
+    } else {
+      menuContainer.classList.add("menu-open");
+    }
+  }
 
   menuButton.addEventListener("click", function () {
     // 메뉴 버튼을 클릭했을 때 메뉴가 나타나도록 토글
@@ -17,30 +26,29 @@ document.addEventListener("DOMContentLoaded", function () {
       menuContainer.style.display = "block";
     }
   });
+  
   submitButton.addEventListener("click", function () {
     const inputData = inputField.value;
     const xhr = new XMLHttpRequest();
-
-
 
     xhr.open("POST", "/submit-data", true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            responseDiv.innerHTML = `서버 응답: ${response.message}`;
-    
-            // userInfo를 설정하고 displayUserInfo를 호출
-            userInfo = response.userInfo;
-            displayUserInfo(userInfo);
-    
-            // logoInfo를 설정하고 setLogo를 호출
-            logoInfo = response.logoInfo;
-            setLogo(logoInfo.logo);
-        }
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        const response = JSON.parse(xhr.responseText);
+        responseDiv.innerHTML = `서버 응답: ${response.message}`;
+
+        // userInfo를 설정하고 displayUserInfo를 호출
+        userInfo = response.userInfo;
+        displayUserInfo(userInfo);
+
+        // logoInfo를 설정하고 setLogo를 호출
+        logoInfo = response.logoInfo;
+        setLogo(logoInfo.logo);
+      }
     };
-    
+
     const dataToSend = JSON.stringify({ data: inputData });
     xhr.send(dataToSend);
   });
