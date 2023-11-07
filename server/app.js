@@ -5,6 +5,8 @@ const routes = require('./routes'); // routes.js 파일을 포함
 
 const PORT = process.env.PORT || 3000;
 
+app.use(express.json());
+
 app.use('/', routes); // 라우터를 애플리케이션에 연결
 
 // 정적 파일을 서비스하기 위해 express.static 미들웨어를 사용합니다.
