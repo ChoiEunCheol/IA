@@ -45,7 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
         const response = JSON.parse(xhr.responseText);
-        responseDiv.innerHTML = `서버 응답: ${response.message}`;
+        
+        const responseContainer = document.getElementById('responseContainer');
+            const newDiv = document.createElement('div');
+            newDiv.textContent = `서버 응답: ${response.message}`;
+            responseContainer.prepend(newDiv);
 
         // userInfo를 설정하고 displayUserInfo를 호출
         userInfo = response.userInfo;
