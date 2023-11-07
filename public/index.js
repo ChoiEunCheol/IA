@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const submitButton = document.getElementById("submitButton");
   const responseDiv = document.getElementById("response");
 
-  const menuButton = document.getElementById("menu");
+  const menuButton = document.getElementsByClassName("menu");
   const menuContainer = document.querySelector(".menu-container");
 
   function toggleMenu() {
@@ -18,7 +18,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  menuButton.addEventListener("click", function () {
+  menuButton[0].addEventListener("click", function () {
+    // 메뉴 버튼을 클릭했을 때 메뉴가 나타나도록 토글
+    if (menuContainer.style.display === "block") {
+      menuContainer.style.display = "none";
+    } else {
+      menuContainer.style.display = "block";
+    }
+  });
+
+  menuButton[1].addEventListener("click", function () {
     // 메뉴 버튼을 클릭했을 때 메뉴가 나타나도록 토글
     if (menuContainer.style.display === "block") {
       menuContainer.style.display = "none";
