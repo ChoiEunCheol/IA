@@ -14,7 +14,7 @@ router.post("/submit-data", (req, res) => {
   // 사용자 정보를 읽어와 클라이언트로 전송
   const userInfo = readUserInfo(); // 사용자 정보를 읽어오는 함수
 
-  res.json({ message: `서버에서 받은 데이터: ${inputData}`, userInfo.name });
+  res.json({ message: `서버에서 받은 데이터: ${inputData}, ${userInfo.name}`});
 });
 
 function readUserInfo() {
