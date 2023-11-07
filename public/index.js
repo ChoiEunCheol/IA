@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   let userInfo; // userInfo를 전역 변수로 정의
   let logoInfo; // logoInfo를 전역 변수로 정의
-  console.log(logoInfo);
 
   const inputField = document.getElementById("inputField");
   const submitButton = document.getElementById("submitButton");
