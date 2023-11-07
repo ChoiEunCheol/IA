@@ -24,7 +24,7 @@ router.post('/submit-data', (req, res) => {
 
 const dataPath = path.join(__dirname, 'data.json');
 
-router.get('/get-data', (req, res) => {
+router.get('/jsonfile', (req, res) => {
     try {
       const dataPath = path.join(__dirname, 'data.json');
       const data = fs.readFileSync(dataPath, 'utf8');

@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const inputField = document.getElementById("inputField");
   const submitButton = document.getElementById("submitButton");
   const responseDiv = document.getElementById("response");
-  const smileyIcon = document.getElementById("smiley");
   const menuButton = document.getElementById("menu");
   const menuContainer = document.querySelector(".menu-container");
 
@@ -22,8 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputData = inputField.value;
     const xhr = new XMLHttpRequest();
 
-    // AJAX 요청을 사용하여 서버에서 데이터를 요청
-    xhr.open("GET", "/get-data", true);
+
 
     xhr.open("POST", "/submit-data", true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");

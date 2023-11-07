@@ -13,19 +13,39 @@
     </div>
     <div class="menu-container"> <!-- 메뉴 컨테이너를 추가 -->
         <ul class="menu-list">
-            <li><a href="#">메뉴 항목 1</a></li>
-            <li><a href="#">메뉴 항목 2</a></li>
-            <li><a href="#">메뉴 항목 3</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
         </ul>
     </div>
     <div class="content">
         <h1>데이터 전송 예제</h1>
-        <input type="text" id="inputField" placeholder="데이터를 입력하세요">
+        <input type="text" id="inputField">
         <button id="submitButton">전송</button>
         <div id="userInfo"></div>
         <div id="response"></div>
     </div>
     <script src="index.js"></script> <!-- index.js 파일을 로드 -->
+    <script>// AJAX 요청을 사용하여 서버에서 데이터를 요청
+        const input = document.getElementById("inputField");
+        const smileyIcon = document.getElementById("smiley");
+        const li = document.getElementsByTagName("li");
+
+        fetch('http://localhost:3000/jsonfile')
+            .then(response => response.json())
+            .then(data => {
+                // 가져온 데이터를 HTML 페이지에 표시
+                smileyIcon.innerHTML = data.header.logo;
+                for (let i = 0; i < 4; i++) {
+                    li[i].innerHTML = data.header.hamburgerMenu[i]
+                }
+                input.placeholder = data.header.promptInputPlaceholder;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
 </body>
 
 </html>
