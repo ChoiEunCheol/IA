@@ -17,6 +17,7 @@ fs.readFile(filePath, 'utf8', (err, data) => {
 
   createJson(1111,"ㅎㅇ");
   createJson(2222,"ㅂㅇ");
+  createJson(3333,{ "a" : "b", "c" : "d"});
 
   // JSON 데이터를 다시 문자열로 변환
   const updatedData = JSON.stringify(jsonData, null, 2);
