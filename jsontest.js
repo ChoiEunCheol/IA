@@ -10,8 +10,13 @@ fs.readFile(filePath, 'utf8', (err, data) => {
   // JSON 데이터 파싱
   const jsonData = JSON.parse(data);
 
-  // 새로운 키와 값을 추가
-  jsonData.newKey = '제이슨ㅇㅇ';
+  // 키와 값을 추가하는 기능을 함수화 하기
+  function createJson(key, value){
+    jsonData[key] = value;
+  }
+
+  createJson(1111,"ㅎㅇ");
+  createJson(2222,"ㅂㅇ");
 
   // JSON 데이터를 다시 문자열로 변환
   const updatedData = JSON.stringify(jsonData, null, 2);
