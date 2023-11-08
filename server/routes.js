@@ -29,7 +29,6 @@ const dataPath = path.join(__dirname, "data.json");
 
 router.get("/jsonfile", (req, res) => {
   try {
-    const dataPath = path.join(__dirname, "data.json");
     const data = fs.readFileSync(dataPath, "utf8");
     const jsonData = JSON.parse(data);
 
