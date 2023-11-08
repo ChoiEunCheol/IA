@@ -11,7 +11,7 @@ fs.readFile(filePath, 'utf8', (err, data) => {
   const jsonData = JSON.parse(data);
 
   // 새로운 키와 값을 추가
-  jsonData.newKey = '제이슨';
+  jsonData.newKey = '제이슨ㅇㅇ';
 
   // JSON 데이터를 다시 문자열로 변환
   const updatedData = JSON.stringify(jsonData, null, 2);
