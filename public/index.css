@@ -1,5 +1,4 @@
 .menu-container {
-    display: none;
     background-color: #333;
     position: fixed; /* 상단에 고정된 위치로 변경 */
     top: 0; /* 화면 상단으로 배치 */
@@ -31,5 +30,5 @@
 
 /* 추가한 스타일로 메뉴를 슬라이드시킴 */
 .menu-open {
-    left: 0;
+    display: none;
 }

@@ -6,36 +6,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const submitButton = document.getElementById("submitButton");
   const responseDiv = document.getElementById("response");
 
-  const menuButton = document.getElementsByClassName("menu");
+  const menuButton = document.querySelectorAll(".menu");
   const menuContainer = document.querySelector(".menu-container");
+  const responseContainer = document.getElementById('responseContainer');
 
   function toggleMenu() {
-    if (menuContainer.classList.contains("menu-open")) {
-      menuContainer.classList.remove("menu-open");
-    } else {
-      menuContainer.classList.add("menu-open");
-    }
+    menuContainer.classList.toggle("menu-open");
   }
 
-  menuButton[0].addEventListener("click", function () {
-    // 메뉴 버튼을 클릭했을 때 메뉴가 나타나도록 토글
-    if (menuContainer.style.display === "block") {
-      menuContainer.style.display = "none";
-    } else {
-      menuContainer.style.display = "block";
-    }
+  menuButton.forEach(button => {
+    button.addEventListener("click", toggleMenu);
   });
 
-  menuButton[1].addEventListener("click", function () {
-    // 메뉴 버튼을 클릭했을 때 메뉴가 나타나도록 토글
-    if (menuContainer.style.display === "block") {
-      menuContainer.style.display = "none";
-    } else {
-      menuContainer.style.display = "block";
-    }
-  });
+  submitButton.addEventListener("click", handleSubmit);
 
-  submitButton.addEventListener("click", function () {
+  function handleSubmit() {
     const inputData = inputField.value;
     const xhr = new XMLHttpRequest();
 
@@ -45,11 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
         const response = JSON.parse(xhr.responseText);
-        
-        const responseContainer = document.getElementById('responseContainer');
-            const newDiv = document.createElement('div');
-            newDiv.textContent = `서버 응답: ${response.message}`;
-            responseContainer.prepend(newDiv);
+        const newDiv = createResponseDiv(`서버 응답: ${response.message}`);
+        responseContainer.prepend(newDiv);
 
         // userInfo를 설정하고 displayUserInfo를 호출
         userInfo = response.userInfo;
@@ -63,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const dataToSend = JSON.stringify({ data: inputData });
     xhr.send(dataToSend);
-  });
+  }
 
   function displayUserInfo(userInfo) {
     const userInfoDiv = document.getElementById("userInfo");
@@ -72,9 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // logoInfo를 설정하는 함수
   function setLogo(logoInfo) {
-    // smileyIcon을 로고로 설정
+    const smileyIcon = document.getElementById("smiley");
     smileyIcon.textContent = logoInfo;
   }
+
+  function createResponseDiv(content) {
+    const newDiv = document.createElement('div');
+    newDiv.textContent = content;
+    return newDiv;
+  }
+
   // 서버로부터 전송된 logoInfo 사용
   if (logoInfo) {
     setLogo(logoInfo.logo);
