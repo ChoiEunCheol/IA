@@ -1,14 +1,17 @@
-// routes.js
 const express = require("express");
 const path = require("path");
-const router = express.Router();
 const fs = require("fs");
 
-router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
+const app = express();
+
+// 서버에 정적 파일 제공
+app.use(express.static(path.join(__dirname, "public"));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
-router.post("/submit-data", (req, res) => {
+app.post("/submit-data", (req, res) => {
   const inputData = req.body.data;
 
   // 사용자 정보 및 로고 정보를 읽어와 클라이언트로 전송
@@ -25,9 +28,8 @@ router.post("/submit-data", (req, res) => {
   }); // logoInfo를 서버 응답에 추가
 });
 
-const dataPath = path.join(__dirname, "data.json");
-
-router.get("/jsonfile", (req, res) => {
+app.get("/jsonfile", (req, res) => {
+  const dataPath = path.join(__dirname, "data.json");
   try {
     const data = fs.readFileSync(dataPath, "utf8");
     const jsonData = JSON.parse(data);
@@ -41,6 +43,7 @@ router.get("/jsonfile", (req, res) => {
 });
 
 function readUserInfo() {
+  const dataPath = path.join(__dirname, "data.json");
   try {
     const data = fs.readFileSync(dataPath, "utf8");
     const jsonData = JSON.parse(data);
@@ -52,6 +55,7 @@ function readUserInfo() {
 }
 
 function readLogoInfo() {
+  const dataPath = path.join(__dirname, "data.json");
   try {
     const data = fs.readFileSync(dataPath, "utf8");
     const jsonData = JSON.parse(data);
@@ -62,4 +66,7 @@ function readLogoInfo() {
   }
 }
 
-module.exports = router;
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
