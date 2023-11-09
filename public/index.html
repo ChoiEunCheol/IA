@@ -23,7 +23,7 @@
         </ul>
     </div>
     <div class="content">
-        <h1>데이터 전송 예제</h1>
+        <h1>IA</h1>
         <input type="text" id="inputField">
         <button id="submitButton">전송</button>
         <div id="userInfo"></div>
@@ -35,7 +35,7 @@
         const input = document.getElementById("inputField");
         const smileyIcon = document.getElementById("smiley");
         const aTag = document.getElementsByTagName("a");
-        const content = document.getElementsByClassName("content");
+        const h1Tag = document.getElementsByTagName("h1");
 
         fetch('http://localhost:3000/jsonfile')
             .then(response => response.json())
@@ -52,16 +52,15 @@
                 console.error('Error:', error);
             });
 
-        fetch('style.json')
+        fetch('http://localhost:3000/stylejson')
             .then(response => response.json())
             .then(styleData => {
-                // 스타일 데이터에서 변수 값을 읽어옵니다.
-                const { colors, fonts, icons } = styleData;
+                // console.log(styleData.colors.secondary)
 
                 // CSS 변수에 값을 설정합니다.
                 // document.documentElement.style.setProperty('--primary-color', colors.primary);
                 // document.documentElement.style.setProperty('--secondary-color', colors.secondary);
-                document.content[0].style.background(colors.secondary);
+                h1Tag[0].style.background = styleData.colors.primary;
                 // document.documentElement.style.setProperty('--text-color', colors.text);
                 // document.documentElement.style.setProperty('--main-font', fonts.main);
                 // document.documentElement.style.setProperty('--alternate-font', fonts.alternate);

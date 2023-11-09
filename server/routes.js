@@ -16,7 +16,7 @@ router.post("/submit-data", (req, res) => {
   //   console.log(userInfo);
 
   const logoInfo = readLogoInfo();
-  console.log(`logoInfo : `, logoInfo.logo);
+  // console.log(`logoInfo : `, logoInfo.logo);
 
   // inputRecords에 새로운 데이터 추가
   const newData = {
