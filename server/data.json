@@ -10,7 +10,188 @@
     "promptInputPlaceholder": "Enter your message here..."
   },
   "mainContent": {
-    "inputRecords": [],
+    "inputRecords": [
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asdasd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asdsad",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asdsad",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asdsad",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asdsad",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asdsad",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asdsadasd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asdsadasd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asdsadasd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      },
+      {
+        "type": "John Doe",
+        "message": "asd",
+        "timestamp": "time1"
+      }
+    ],
     "userInfo": {
       "name": "John Doe",
       "status": "Online",

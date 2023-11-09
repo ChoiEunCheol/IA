@@ -89,11 +89,6 @@
     overflow-y: auto; /* 세로 스크롤을 표시하고 필요할 때 스크롤할 수 있도록 함 */
     overflow-x: hidden; /* 가로 스크롤을 숨김 */
   }
-  
-  /* Smiley icon styles */
-  #smiley {
-    font-size: 40px;
-  }
 
 /* --------------------------- */
 
