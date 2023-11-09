@@ -5,7 +5,7 @@ responseContainer : POST 데이터가 기록 될 div
 inputField : input Box
 
 - 변수
-responseDiv : [ response ] id를 가진 div태그
+responseDiv : [ response ] id를 가진 div태그 / 이거 사용 안함
 
 ## 추가적으로 해야 될 작업
 <!-- 1. 상단에 로고 (이모지폰트)와 햄버거 메뉴 표시 -->

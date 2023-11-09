@@ -43,6 +43,7 @@
                 smileyIcon.innerHTML = data.header.logo;
                 for (let i = 0; i < 4; i++) {
                     aTag[i].innerHTML = data.header.hamburgerMenu[i]
+                    aTag[i].href = data.header.hamburgerMenu[i]
                 }
                 input.placeholder = data.header.promptInputPlaceholder;
             })
