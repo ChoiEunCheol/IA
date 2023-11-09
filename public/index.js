@@ -56,16 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
     inputRecordsDiv.innerHTML = '';
   
     inputRecords.forEach(record => {
-      const responseDiv = createResponseDiv();
-      responseDiv.classList = "response"
-      const messageDiv = createResponseDiv(`${record.message}`);
-      messageDiv.classList = "message"
-      const infoDiv = createResponseDiv();
-      infoDiv.classList = "info"
-      const typeDiv = createResponseDiv(`Type: ${record.type}`);
-      typeDiv.classList = "type"
-      const timestampDiv = createResponseDiv(`Timestamp: ${record.timestamp}`);
-      timestampDiv.classList = "type"
+      const responseDiv = createResponseDiv("","response");
+      const messageDiv = createResponseDiv(`${record.message}`,"message");
+      const infoDiv = createResponseDiv("","info");
+      const typeDiv = createResponseDiv(`Type: ${record.type}`,"type");
+      const timestampDiv = createResponseDiv(`Timestamp: ${record.timestamp}`,"timestamp");
 
       inputRecordsDiv.appendChild(responseDiv);
       responseDiv.appendChild(messageDiv);
@@ -86,9 +81,10 @@ document.addEventListener("DOMContentLoaded", function () {
     smileyIcon.textContent = logoInfo;
   }
 
-  function createResponseDiv(content) {
+  function createResponseDiv(content,className) {
     const newDiv = document.createElement('div');
     newDiv.textContent = content;
+    newDiv.classList = className;
     return newDiv;
   }
 
