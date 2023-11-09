@@ -94,3 +94,37 @@
   #smiley {
     font-size: 40px;
   }
+
+  .response {
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5F5;
+    border: 1px solid #333333;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+  }
+  
+  .message {
+    background-color: #FFF;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .type {
+    font-weight: bold;
+  }
+  
+  .timestamp {
+    margin-left: 10px;
+  }
+  
