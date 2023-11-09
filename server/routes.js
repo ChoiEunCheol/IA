@@ -23,34 +23,41 @@ router.post("/submit-data", (req, res) => {
     userInfo,
     logoInfo,
   }); // logoInfo를 서버 응답에 추가
-  fs.readFile('data.json', 'utf8', (err, data) => {
+
+  //post 요청시 json파일에 채팅내역 추가
+  fs.readFile("data.json", "utf8", (err, data) => {
     if (err) {
-      console.error('파일 읽기 오류:', err);
+      console.error("파일 읽기 오류:", err);
       return;
     }
-  
+
     // JSON 데이터 파싱
     const jsonData = JSON.parse(data);
-  
+
     // 키와 값을 추가하는 기능을 함수화 하기
-    function createJson(key, value){
+    function createJson(key, value) {
       jsonData[key] = value;
     }
-    
 
-    
+    const newData = {
+      key1: 'value1',
+      key2: 'value2',
+    }
+
+    jsonData.mainContent.inputRecords.push(newData);
+
     // JSON 데이터를 다시 문자열로 변환
     // null, 2 는 가독성을 위해 ?
     const updatedData = JSON.stringify(jsonData, null, 2);
-  
+
     // 파일 쓰기
-    fs.writeFile('data.json', updatedData, (err) => {
+    fs.writeFile("data.json", updatedData, (err) => {
       if (err) {
-        console.error('파일 쓰기 오류:', err);
+        console.error("파일 쓰기 오류:", err);
         return;
       }
-  
-      console.log('새로운 키와 값이 JSON 파일에 추가되었습니다.');
+
+      console.log("새로운 키와 값이 JSON 파일에 추가되었습니다.");
     });
   });
 });
@@ -68,8 +75,6 @@ router.get("/jsonfile", (req, res) => {
     console.error("데이터를 읽어오는 동안 오류 발생:", error);
     res.status(500).json({ error: "데이터를 불러오지 못했습니다." });
   }
-
- 
 });
 
 function readUserInfo() {
@@ -93,7 +98,5 @@ function readLogoInfo() {
     return {};
   }
 }
-
-
 
 module.exports = router;

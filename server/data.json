@@ -20,6 +20,10 @@
         "type": "assistant",
         "message": "OpenAI is a machine learning model...",
         "timestamp": "10:24 AM"
+      },
+      {
+        "key1": "value1",
+        "key2": "value2"
       }
     ],
     "userInfo": {
