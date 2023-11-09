@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const inputField = document.getElementById("inputField");
   const submitButton = document.getElementById("submitButton");
-
+  const smileyIcon = document.getElementById("smiley");
   const menuButton = document.querySelectorAll(".menu");
   const menuContainer = document.querySelector(".menu-container");
   const responseContainer = document.getElementById('responseContainer');
@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // logoInfo를 설정하는 함수
   function setLogo(logoInfo) {
-    const smileyIcon = document.getElementById("smiley");
     smileyIcon.textContent = logoInfo;
   }
 
@@ -92,4 +91,23 @@ document.addEventListener("DOMContentLoaded", function () {
   if (logoInfo) {
     setLogo(logoInfo.logo);
   }
+
+  // 클라이언트 측에서 모든 inputRecords를 삭제하는 함수
+function deleteAllInputRecords() {
+  fetch('http://localhost:3000/delete-records', {
+    method: 'POST',
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.message); // 성공적인 삭제 메시지 출력
+      responseContainer.innerHTML = ''; // 삭제 후 렌더링된 메시지 초기화
+    })
+    .catch(error => {
+      console.error('Error deleting records:', error);
+    });
+}
+
+// 예를 들어, 버튼 클릭 시 모든 inputRecords 삭제 기능을 실행
+smileyIcon.addEventListener("click", deleteAllInputRecords);
 });
+

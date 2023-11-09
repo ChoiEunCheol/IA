@@ -78,6 +78,46 @@ router.get("/jsonfile", (req, res) => {
   }
 });
 
+router.post("/delete-records", (req, res) => {
+  const newData = {
+    "header": {
+      "hamburgerMenu": [
+        "Home",
+        "Profile",
+        "Settings",
+        "Logout"
+      ],
+      "logo": "🌐",
+      "promptInputPlaceholder": "Enter your message here..."
+    },
+    "mainContent": {
+      "inputRecords": [
+      ],
+      "userInfo": {
+        "name": "John Doe",
+        "status": "Online",
+        "avatar": "👤"
+      }
+    }
+  }
+
+
+  // JSON 데이터를 문자열로 변환
+  const updatedData = JSON.stringify(newData, null, 2);
+
+  // 파일 쓰기
+  fs.writeFile("data.json", updatedData, (err) => {
+    if (err) {
+      console.error("파일 쓰기 오류:", err);
+      return res.status(500).json({ error: "데이터 삭제에 실패했습니다." });
+    }
+
+    console.log("모든 inputRecords가 삭제되었습니다.");
+    res.json({ message: "모든 inputRecords가 삭제되었습니다." });
+  });
+});
+
+
 function readUserInfo() {
   try {
     const data = fs.readFileSync(dataPath, "utf8");
