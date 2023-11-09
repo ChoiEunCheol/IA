@@ -63,6 +63,8 @@
                 console.error('Error:', error);
             });
 
+            // style.json에서 값 불러오기
+            // 하는 방법만 연습하고 나머지는 css파일에서 그냥 처리함
         fetch('http://localhost:3000/stylejson')
             .then(response => response.json())
             .then(styleData => {
