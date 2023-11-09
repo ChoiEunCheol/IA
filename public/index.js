@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const inputField = document.getElementById("inputField");
   const submitButton = document.getElementById("submitButton");
-  const responseDiv = document.getElementById("response");
 
   const menuButton = document.querySelectorAll(".menu");
   const menuContainer = document.querySelector(".menu-container");
