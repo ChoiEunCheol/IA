@@ -82,9 +82,4 @@ document.addEventListener("DOMContentLoaded", function () {
   if (logoInfo) {
     setLogo(logoInfo.logo);
   }
-
-  const h1 = document.getElementsByTagName("h1");
-  h1[0].addEventListener("click", () => {
-    console.log(userInfo, logoInfo);
-  });
 });

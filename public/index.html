@@ -7,13 +7,14 @@
 </head>
 
 <body>
+    
     <div class="header">
         <span id="menu" class="menu">&#9776;</span>
         <span id="smiley"></span>
     </div>
     <div class="menu-container menu-open">
         <span class="menu">&#9776;</span>
-         <!-- 메뉴 컨테이너를 추가 -->
+        <!-- 메뉴 컨테이너를 추가 -->
         <ul class="menu-list">
             <li><a href=""></a></li>
             <li><a href=""></a></li>
@@ -34,6 +35,7 @@
         const input = document.getElementById("inputField");
         const smileyIcon = document.getElementById("smiley");
         const aTag = document.getElementsByTagName("a");
+        const content = document.getElementsByClassName("content");
 
         fetch('http://localhost:3000/jsonfile')
             .then(response => response.json())
@@ -48,6 +50,26 @@
             })
             .catch(error => {
                 console.error('Error:', error);
+            });
+
+        fetch('style.json')
+            .then(response => response.json())
+            .then(styleData => {
+                // 스타일 데이터에서 변수 값을 읽어옵니다.
+                const { colors, fonts, icons } = styleData;
+
+                // CSS 변수에 값을 설정합니다.
+                // document.documentElement.style.setProperty('--primary-color', colors.primary);
+                // document.documentElement.style.setProperty('--secondary-color', colors.secondary);
+                document.content[0].style.background(colors.secondary);
+                // document.documentElement.style.setProperty('--text-color', colors.text);
+                // document.documentElement.style.setProperty('--main-font', fonts.main);
+                // document.documentElement.style.setProperty('--alternate-font', fonts.alternate);
+                // document.documentElement.style.setProperty('--logo-icon', icons.logo);
+                // document.documentElement.style.setProperty('--user-avatar-icon', icons.userAvatar);
+            })
+            .catch(error => {
+                console.error('Error loading style data:', error);
             });
     </script>
 </body>
