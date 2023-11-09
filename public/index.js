@@ -56,8 +56,22 @@ document.addEventListener("DOMContentLoaded", function () {
     inputRecordsDiv.innerHTML = '';
   
     inputRecords.forEach(record => {
-      const recordDiv = createResponseDiv(`Type: ${record.type}, Message: ${record.message}, Timestamp: ${record.timestamp}`);
-      inputRecordsDiv.appendChild(recordDiv);
+      const responseDiv = createResponseDiv();
+      responseDiv.classList = "response"
+      const messageDiv = createResponseDiv(`${record.message}`);
+      messageDiv.classList = "message"
+      const infoDiv = createResponseDiv();
+      infoDiv.classList = "info"
+      const typeDiv = createResponseDiv(`Type: ${record.type}`);
+      typeDiv.classList = "type"
+      const timestampDiv = createResponseDiv(`Timestamp: ${record.timestamp}`);
+      timestampDiv.classList = "type"
+
+      inputRecordsDiv.appendChild(responseDiv);
+      responseDiv.appendChild(messageDiv);
+      inputRecordsDiv.appendChild(infoDiv);
+      infoDiv.appendChild(typeDiv);
+      infoDiv.appendChild(timestampDiv);
     });
   }
 
