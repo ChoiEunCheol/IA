@@ -38,6 +38,37 @@ router.get("/jsonfile", (req, res) => {
     console.error("데이터를 읽어오는 동안 오류 발생:", error);
     res.status(500).json({ error: "데이터를 불러오지 못했습니다." });
   }
+
+  fs.readFile('data.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error('파일 읽기 오류:', err);
+      return;
+    }
+  
+    // JSON 데이터 파싱
+    const jsonData = JSON.parse(data);
+  
+    // 키와 값을 추가하는 기능을 함수화 하기
+    function createJson(key, value){
+      jsonData[key] = value;
+    }
+    
+
+    
+    // JSON 데이터를 다시 문자열로 변환
+    // null, 2 는 가독성을 위해 ?
+    const updatedData = JSON.stringify(jsonData, null, 2);
+  
+    // 파일 쓰기
+    fs.writeFile('data.json', updatedData, (err) => {
+      if (err) {
+        console.error('파일 쓰기 오류:', err);
+        return;
+      }
+  
+      console.log('새로운 키와 값이 JSON 파일에 추가되었습니다.');
+    });
+  });
 });
 
 function readUserInfo() {
@@ -62,33 +93,6 @@ function readLogoInfo() {
   }
 }
 
-fs.readFile('data.json', 'utf8', (err, data) => {
-  if (err) {
-    console.error('파일 읽기 오류:', err);
-    return;
-  }
 
-  // JSON 데이터 파싱
-  const jsonData = JSON.parse(data);
-
-  // 키와 값을 추가하는 기능을 함수화 하기
-  function createJson(key, value){
-    jsonData[key] = value;
-  }
-  
-  // JSON 데이터를 다시 문자열로 변환
-  // null, 2 는 가독성을 위해 ?
-  const updatedData = JSON.stringify(jsonData, null, 2);
-
-  // 파일 쓰기
-  fs.writeFile('data.json', updatedData, (err) => {
-    if (err) {
-      console.error('파일 쓰기 오류:', err);
-      return;
-    }
-
-    console.log('새로운 키와 값이 JSON 파일에 추가되었습니다.');
-  });
-});
 
 module.exports = router;
