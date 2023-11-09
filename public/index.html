@@ -55,17 +55,7 @@
         fetch('http://localhost:3000/stylejson')
             .then(response => response.json())
             .then(styleData => {
-                // console.log(styleData.colors.secondary)
-
-                // CSS 변수에 값을 설정합니다.
-                // document.documentElement.style.setProperty('--primary-color', colors.primary);
-                // document.documentElement.style.setProperty('--secondary-color', colors.secondary);
                 h1Tag[0].style.background = styleData.colors.primary;
-                // document.documentElement.style.setProperty('--text-color', colors.text);
-                // document.documentElement.style.setProperty('--main-font', fonts.main);
-                // document.documentElement.style.setProperty('--alternate-font', fonts.alternate);
-                // document.documentElement.style.setProperty('--logo-icon', icons.logo);
-                // document.documentElement.style.setProperty('--user-avatar-icon', icons.userAvatar);
             })
             .catch(error => {
                 console.error('Error loading style data:', error);
