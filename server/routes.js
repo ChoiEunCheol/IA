@@ -13,16 +13,16 @@ router.post("/submit-data", (req, res) => {
 
   // 사용자 정보 및 로고 정보를 읽어와 클라이언트로 전송
   const userInfo = readUserInfo();
-  //   console.log(userInfo);
-
   const logoInfo = readLogoInfo();
-  // console.log(`logoInfo : `, logoInfo.logo);
+
+  // 현재 시간을 문자열로 변환
+  const timestamp = new Date().toLocaleTimeString();
 
   // inputRecords에 새로운 데이터 추가
   const newData = {
     type: userInfo.name,
     message: inputData,
-    timestamp: 'time1',
+    timestamp: timestamp, // 현재 시간으로 설정
   };
 
   const data = fs.readFileSync(dataPath, "utf8");
@@ -31,7 +31,6 @@ router.post("/submit-data", (req, res) => {
   jsonData.mainContent.inputRecords.push(newData);
 
   // JSON 데이터를 다시 문자열로 변환
-  // null, 2 는 가독성을 위해 ?
   const updatedData = JSON.stringify(jsonData, null, 2);
 
   // 파일 쓰기
