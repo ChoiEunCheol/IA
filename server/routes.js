@@ -80,7 +80,7 @@ router.get("/jsonfile", (req, res) => {
 
 function readUserInfo() {
   try {
-    const data = fs.readFile(dataPath, "utf8");
+    const data = fs.readFileSync(dataPath, "utf8");
     const jsonData = JSON.parse(data);
     return jsonData.mainContent.userInfo;
   } catch (error) {
@@ -91,7 +91,7 @@ function readUserInfo() {
 
 function readLogoInfo() {
   try {
-    const data = fs.readFile(dataPath, "utf8");
+    const data = fs.readFileSync(dataPath, "utf8");
     const jsonData = JSON.parse(data);
     return jsonData.header;
   } catch (error) {
