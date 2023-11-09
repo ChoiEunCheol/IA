@@ -35,7 +35,7 @@
         const input = document.getElementById("inputField");
         const smileyIcon = document.getElementById("smiley");
         const aTag = document.getElementsByTagName("a");
-        const h1Tag = document.getElementsByTagName("h1");
+        const submitButton = document.getElementById("submitButton");
 
         fetch('http://localhost:3000/jsonfile')
             .then(response => response.json())
@@ -55,7 +55,7 @@
         fetch('http://localhost:3000/stylejson')
             .then(response => response.json())
             .then(styleData => {
-                h1Tag[0].style.background = styleData.colors.primary;
+                submitButton.style.background = styleData.colors.secondary;
             })
             .catch(error => {
                 console.error('Error loading style data:', error);

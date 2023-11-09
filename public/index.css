@@ -34,8 +34,8 @@
 }
 
 .header {
-    background-color: var(--primary);
-    color: var(--text);
+    background-color: #FF5733;
+    color: #333333;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -45,38 +45,10 @@
     font-size: 24px;
     cursor: pointer;
   }
-  
-  /* Menu container styles */
-  .menu-container {
-    display: none;
-    background-color: var(--secondary);
-    position: absolute;
-    top: 50px;
-    right: 0;
-    width: 200px;
-  }
-  
-  .menu-open {
-    display: block;
-  }
-  
-  .menu-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .menu-list li {
-    padding: 10px;
-  }
-  
-  .menu-list li a {
-    color: var(--text);
-    text-decoration: none;
-  }
-  
+ 
   /* Content styles */
   .content {
-    background-color: var(--background);
+    background-color: #F5F5F5;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -84,8 +56,8 @@
   }
   
   h1 {
-    background-color: var(--primary);
-    color: var(--text);
+    background-color: #FF5733;
+    color: #333333;
     padding: 10px;
     margin-bottom: 20px;
   }
@@ -97,8 +69,7 @@
   }
   
   #submitButton {
-    background-color: var(--primary);
-    color: var(--text);
+    color: #333333;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
@@ -113,7 +84,7 @@
     margin-top: 20px;
     padding: 10px;
     background-color: white;
-    border: 1px solid var(--text);
+    border: 1px solid #333333;
     min-height: 200px;
     overflow-y: auto;
   }
