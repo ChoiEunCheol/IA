@@ -100,4 +100,18 @@ function readLogoInfo() {
   }
 }
 
+router.get("/input-records", (req, res) => {
+  try {
+    const data = fs.readFileSync(dataPath, "utf8");
+    const jsonData = JSON.parse(data);
+
+    // inputRecords 객체를 클라이언트에게 JSON 데이터로 응답
+    res.json(jsonData.mainContent.inputRecords);
+  } catch (error) {
+    console.error("데이터를 읽어오는 동안 오류 발생:", error);
+    res.status(500).json({ error: "데이터를 불러오지 못했습니다." });
+  }
+});
+
+
 module.exports = router;
