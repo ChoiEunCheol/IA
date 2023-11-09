@@ -34,14 +34,15 @@ router.post("/submit-data", (req, res) => {
     // JSON 데이터 파싱
     const jsonData = JSON.parse(data);
 
-    // 키와 값을 추가하는 기능을 함수화 하기
-    function createJson(key, value) {
-      jsonData[key] = value;
-    }
+    // 키와 값을 추가하는 기능을 함수화 하기 -> 지금은 불필요할듯
+    // function createJson(key, value) {
+    //   jsonData[key] = value;
+    // }
 
     const newData = {
-      key1: 'value1',
-      key2: 'value2',
+      type: userInfo.name,
+      message : inputData,
+      timestamp : 'time1',
     }
 
     jsonData.mainContent.inputRecords.push(newData);
