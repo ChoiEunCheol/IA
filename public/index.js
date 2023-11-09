@@ -23,28 +23,43 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleSubmit() {
     const inputData = inputField.value;
     const xhr = new XMLHttpRequest();
-
+  
     xhr.open("POST", "/submit-data", true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
+  
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
         const response = JSON.parse(xhr.responseText);
+  
         const newDiv = createResponseDiv(`서버 응답: ${response.message}`);
         responseContainer.prepend(newDiv);
-
+  
         // userInfo를 설정하고 displayUserInfo를 호출
         userInfo = response.userInfo;
         displayUserInfo(userInfo);
-
+  
         // logoInfo를 설정하고 setLogo를 호출
         logoInfo = response.logoInfo;
         setLogo(logoInfo.logo);
+  
+        // inputRecords 업데이트
+        const inputRecords = response.inputRecords;
+        displayInputRecords(inputRecords);
       }
     };
-
+  
     const dataToSend = JSON.stringify({ data: inputData });
     xhr.send(dataToSend);
+  }
+  
+  function displayInputRecords(inputRecords) {
+    const inputRecordsDiv = document.getElementById("responseContainer");
+    inputRecordsDiv.innerHTML = '';
+  
+    inputRecords.forEach(record => {
+      const recordDiv = createResponseDiv(`Type: ${record.type}, Message: ${record.message}, Timestamp: ${record.timestamp}`);
+      inputRecordsDiv.appendChild(recordDiv);
+    });
   }
 
   function displayUserInfo(userInfo) {

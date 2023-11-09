@@ -18,47 +18,35 @@ router.post("/submit-data", (req, res) => {
   const logoInfo = readLogoInfo();
   console.log(`logoInfo : `, logoInfo.logo);
 
-  res.json({
-    message: `서버에서 받은 데이터: ${inputData}`,
-    userInfo,
-    logoInfo,
-  }); // logoInfo를 서버 응답에 추가
+  // inputRecords에 새로운 데이터 추가
+  const newData = {
+    type: userInfo.name,
+    message: inputData,
+    timestamp: 'time1',
+  };
 
-  //post 요청시 json파일에 채팅내역 추가
-  fs.readFile("data.json", "utf8", (err, data) => {
+  const data = fs.readFileSync(dataPath, "utf8");
+  const jsonData = JSON.parse(data);
+
+  jsonData.mainContent.inputRecords.push(newData);
+
+  // JSON 데이터를 다시 문자열로 변환
+  // null, 2 는 가독성을 위해 ?
+  const updatedData = JSON.stringify(jsonData, null, 2);
+
+  // 파일 쓰기
+  fs.writeFile(dataPath, updatedData, (err) => {
     if (err) {
-      console.error("파일 읽기 오류:", err);
-      return;
+      console.error("파일 쓰기 오류:", err);
+      return res.status(500).json({ error: "데이터를 업데이트하지 못했습니다." });
     }
 
-    // JSON 데이터 파싱
-    const jsonData = JSON.parse(data);
-
-    // 키와 값을 추가하는 기능을 함수화 하기 -> 지금은 불필요할듯
-    // function createJson(key, value) {
-    //   jsonData[key] = value;
-    // }
-
-    const newData = {
-      type: userInfo.name,
-      message : inputData,
-      timestamp : 'time1',
-    }
-
-    jsonData.mainContent.inputRecords.push(newData);
-
-    // JSON 데이터를 다시 문자열로 변환
-    // null, 2 는 가독성을 위해 ?
-    const updatedData = JSON.stringify(jsonData, null, 2);
-
-    // 파일 쓰기
-    fs.writeFile("data.json", updatedData, (err) => {
-      if (err) {
-        console.error("파일 쓰기 오류:", err);
-        return;
-      }
-
-      console.log("새로운 키와 값이 JSON 파일에 추가되었습니다.");
+    // 업데이트된 데이터를 클라이언트로 응답
+    res.json({
+      message: `서버에서 받은 데이터: ${inputData}`,
+      userInfo,
+      logoInfo,
+      inputRecords: jsonData.mainContent.inputRecords,
     });
   });
 });
@@ -99,19 +87,6 @@ function readLogoInfo() {
     return {};
   }
 }
-
-router.get("/input-records", (req, res) => {
-  try {
-    const data = fs.readFileSync(dataPath, "utf8");
-    const jsonData = JSON.parse(data);
-
-    // inputRecords 객체를 클라이언트에게 JSON 데이터로 응답
-    res.json(jsonData.mainContent.inputRecords);
-  } catch (error) {
-    console.error("데이터를 읽어오는 동안 오류 발생:", error);
-    res.status(500).json({ error: "데이터를 불러오지 못했습니다." });
-  }
-});
 
 
 module.exports = router;
